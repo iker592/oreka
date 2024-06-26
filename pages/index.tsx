@@ -45,7 +45,7 @@ export default function App() {
             ))}
           </ul>
           <div>
-            Shoot us a msg at: @oreka-sports, let's get iit!
+            Shoot us a msg at: @oreka-sports!
             <br />
           </div>
         </main>
