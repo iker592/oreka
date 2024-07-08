@@ -9,7 +9,7 @@ const emojis = [
   { emoji: '😄', level: 1, label: 'Very Happy' },
 ];
 
-const EmojiButton = ({ emoji, onClick, label }) => (
+const EmojiButton = ({ emoji, onClick, label }: { emoji: string, onClick: () => void, label: string }) => (
   <button
     onClick={onClick}
     className="text-6xl hover:scale-110 transition-transform duration-200 focus:outline-none"
@@ -21,12 +21,12 @@ const EmojiButton = ({ emoji, onClick, label }) => (
 );
 
 const EmojiFeedback = () => {
-  const [response, setResponse] = useState(null);
-
-  const handleEmojiClick = (level) => {
+  const [response, setResponse] = useState<string | null>(null);
+  
+  const handleEmojiClick = (level: number) => {
     // This is where you would typically make an API call
     // For demonstration, we'll use placeholder responses
-    let placeholderResponse;
+    let placeholderResponse: string;
     switch (level) {
       case 5:
         placeholderResponse = "We recommend contacting a psychologist. Here's a contact: [Psychologist details]";
