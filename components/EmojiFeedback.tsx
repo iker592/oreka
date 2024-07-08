@@ -12,7 +12,7 @@ const emojis = [
 const EmojiButton = ({ emoji, onClick, label }: { emoji: string, onClick: () => void, label: string }) => (
   <button
     onClick={onClick}
-    className="text-6xl hover:scale-110 transition-transform duration-200 focus:outline-none"
+    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl hover:scale-110 transition-transform duration-200 focus:outline-none"
     title={label}
     aria-label={label}
   >
@@ -41,9 +41,9 @@ const EmojiFeedback = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md w-full">
       <h2 className="text-2xl font-bold mb-6 text-center">How are you feeling today?</h2>
-      <div className="flex justify-between mb-8">
+      <div className="flex justify-between mb-8 flex-wrap">
         {emojis.map((emoji) => (
           <EmojiButton
             key={emoji.level}
