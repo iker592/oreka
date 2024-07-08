@@ -39,3 +39,12 @@ next-env.d.ts
 .amplify
 amplify_outputs*
 amplifyconfiguration*
+public/sw.js
+public/sw.js
+public/workbox-e43f5367.js
+public/workbox-e43f5367.js.map
+public/workbox-07a7b4f2.js
+public/sw.js.map
+public/sw.js
+public/workbox-07a7b4f2.js
+public/sw.js
