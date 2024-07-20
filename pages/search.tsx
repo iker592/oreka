@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
+import CenteredContent from '../components/CenteredContent';
 
 const Search = () => {
   const [selectedIssue, setSelectedIssue] = useState('');
@@ -37,32 +38,34 @@ const Search = () => {
 
   return (
     <Layout>
-      <h1 className="text-3xl font-bold mb-6">Search Personalized Resources</h1>
-      <div className="mb-4">
-        <label htmlFor="issueSelect" className="block mb-2">Select an issue:</label>
-        <select
-          id="issueSelect"
-          value={selectedIssue}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-        >
-          <option value="">Select an issue</option>
-          <option value="sleeping issues">Sleeping Issues</option>
-          <option value="performance issues">Performance Issues</option>
-          <option value="diet issues">Diet Issues</option>
-          <option value="mood issues">Mood Issues</option>
-        </select>
-      </div>
-      {selectedIssue && (
-        <div>
-          <h2 className="text-2xl font-bold mb-4">Resources for {selectedIssue}:</h2>
-          <ul className="list-disc pl-5">
-            {resources[selectedIssue as keyof typeof resources].map((resource, index) => (
-              <li key={index} className="mb-2">{resource}</li>
-            ))}
-          </ul>
+      <CenteredContent>
+        <h1 className="text-3xl font-bold mb-6 text-center">Search Personalized Resources</h1>
+        <div className="mb-4">
+          <label htmlFor="issueSelect" className="block mb-2">Select an issue:</label>
+          <select
+            id="issueSelect"
+            value={selectedIssue}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+          >
+            <option value="">Select an issue</option>
+            <option value="sleeping issues">Sleeping Issues</option>
+            <option value="performance issues">Performance Issues</option>
+            <option value="diet issues">Diet Issues</option>
+            <option value="mood issues">Mood Issues</option>
+          </select>
         </div>
-      )}
+        {selectedIssue && (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Resources for {selectedIssue}:</h2>
+            <ul className="list-disc pl-5">
+              {resources[selectedIssue as keyof typeof resources].map((resource, index) => (
+                <li key={index} className="mb-2">{resource}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </CenteredContent>
     </Layout>
   );
 };
