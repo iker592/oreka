@@ -41,7 +41,7 @@ const OnboardingCheckup = () => {
           <input type="text" id="question4" name="question4" value={formData.question4} onChange={handleChange} className="w-full p-2 border rounded" />
         </div>
         <div>
-          <label htmlFor="question5" className="block mb-2">Do you have any specific mental health concerns you'd like to address?</label>
+          <label htmlFor="question5" className="block mb-2">Do you have any specific mental health concerns you&apos;d like to address?</label>
           <input type="text" id="question5" name="question5" value={formData.question5} onChange={handleChange} className="w-full p-2 border rounded" />
         </div>
         <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Submit</button>
