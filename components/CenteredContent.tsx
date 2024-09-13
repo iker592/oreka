@@ -7,10 +7,8 @@ interface CenteredContentProps {
 
 const CenteredContent: React.FC<CenteredContentProps> = ({ children, maxWidth = 'max-w-2xl' }) => {
   return (
-    <div className={`flex justify-center items-center min-h-screen bg-gray-100`}>
-      <div className={`${maxWidth} w-full mx-auto bg-white rounded-lg shadow-lg p-6`}>
-        {children}
-      </div>
+    <div className={`w-full ${maxWidth} mx-auto bg-white rounded-lg shadow-lg p-6`}>
+      {children}
     </div>
   );
 };

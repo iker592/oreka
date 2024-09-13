@@ -8,10 +8,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {({ signOut, user }) => (
         <div className="min-h-screen bg-gray-100">
           <Sidebar />
-          <div className="ml-16 transition-all duration-300">
-            <main className="p-8">
-              {children}
-            </main>
+          <div className="w-full min-h-screen pt-16">
+            {children}
           </div>
         </div>
       )}
