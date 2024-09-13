@@ -20,7 +20,7 @@ const Sidebar = () => {
     ? `fixed inset-y-0 left-0 z-50 w-64 bg-gray-800 text-white transform ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       } transition-transform duration-300 ease-in-out`
-    : `bg-gray-800 text-white w-16 hover:w-64 min-h-screen p-4 transition-all duration-300 fixed left-0 top-0 z-20 overflow-hidden`;
+    : `fixed inset-y-0 left-0 z-20 bg-gray-800 text-white w-16 hover:w-64 transition-all duration-300 overflow-hidden`;
 
   const linkClass = isMobile
     ? 'flex items-center py-2 px-4 hover:bg-gray-700 rounded'
