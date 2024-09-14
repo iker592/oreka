@@ -21,6 +21,15 @@ const schema = a.schema({
       mentalHealthConcerns: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
+  MonthlyCheckup: a
+    .model({
+      overallMood: a.string(),
+      significantStressors: a.string(),
+      progressTowardsGoals: a.string(),
+      sleepAppetiteChanges: a.string(),
+      improvementFocus: a.string(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
