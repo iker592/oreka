@@ -65,7 +65,7 @@ const MonthlyCheckup = () => {
             <input type="text" id="question4" name="question4" value={formData.question4} onChange={handleChange} className="w-full p-2 border rounded" />
           </div>
           <div>
-            <label htmlFor="question5" className="block mb-2">Is there anything you'd like to focus on improving next month?</label>
+            <label htmlFor="question5" className="block mb-2">Is there anything you would like to focus on improving next month?</label>
             <input type="text" id="question5" name="question5" value={formData.question5} onChange={handleChange} className="w-full p-2 border rounded" />
           </div>
           <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Submit</button>
