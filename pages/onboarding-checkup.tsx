@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { generateClient } from "aws-amplify/data";
+import type { Schema } from "@/amplify/data/resource";
 import Layout from '../components/Layout';
 import CenteredContent from '../components/CenteredContent';
+
+const client = generateClient<Schema>();
 
 const OnboardingCheckup = () => {
   const [formData, setFormData] = useState({
@@ -15,10 +19,28 @@ const OnboardingCheckup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
+    try {
+      await client.models.OnboardingCheckup.create({
+        mentalHealth: formData.question1,
+        stressLevel: formData.question2,
+        sleepQuality: formData.question3,
+        workLifeBalance: formData.question4,
+        mentalHealthConcerns: formData.question5,
+      });
+      console.log('Onboarding checkup submitted successfully');
+      // Reset form or navigate to another page
+      setFormData({
+        question1: '',
+        question2: '',
+        question3: '',
+        question4: '',
+        question5: '',
+      });
+    } catch (error) {
+      console.error('Error submitting onboarding checkup:', error);
+    }
   };
 
   return (
@@ -43,7 +65,7 @@ const OnboardingCheckup = () => {
             <input type="text" id="question4" name="question4" value={formData.question4} onChange={handleChange} className="w-full p-2 border rounded" />
           </div>
           <div>
-            <label htmlFor="question5" className="block mb-2">Do you have any specific mental health concerns you&apos;d like to address?</label>
+            <label htmlFor="question5" className="block mb-2">Do you have any specific mental health concerns you would like to address?</label>
             <input type="text" id="question5" name="question5" value={formData.question5} onChange={handleChange} className="w-full p-2 border rounded" />
           </div>
           <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Submit</button>

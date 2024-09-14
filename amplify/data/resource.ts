@@ -12,6 +12,24 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
+  OnboardingCheckup: a
+    .model({
+      mentalHealth: a.string(),
+      stressLevel: a.string(),
+      sleepQuality: a.string(),
+      workLifeBalance: a.string(),
+      mentalHealthConcerns: a.string(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+  MonthlyCheckup: a
+    .model({
+      overallMood: a.string(),
+      significantStressors: a.string(),
+      progressTowardsGoals: a.string(),
+      sleepAppetiteChanges: a.string(),
+      improvementFocus: a.string(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

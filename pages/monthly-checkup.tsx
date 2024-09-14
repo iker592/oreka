@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { generateClient } from "aws-amplify/data";
+import type { Schema } from "@/amplify/data/resource";
 import Layout from '../components/Layout';
 import CenteredContent from '../components/CenteredContent';
+
+const client = generateClient<Schema>();
 
 const MonthlyCheckup = () => {
   const [formData, setFormData] = useState({
@@ -15,10 +19,28 @@ const MonthlyCheckup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
+    try {
+      await client.models.MonthlyCheckup.create({
+        overallMood: formData.question1,
+        significantStressors: formData.question2,
+        progressTowardsGoals: formData.question3,
+        sleepAppetiteChanges: formData.question4,
+        improvementFocus: formData.question5,
+      });
+      console.log('Monthly checkup submitted successfully');
+      // Reset form or navigate to another page
+      setFormData({
+        question1: '',
+        question2: '',
+        question3: '',
+        question4: '',
+        question5: '',
+      });
+    } catch (error) {
+      console.error('Error submitting monthly checkup:', error);
+    }
   };
 
   return (
@@ -43,7 +65,7 @@ const MonthlyCheckup = () => {
             <input type="text" id="question4" name="question4" value={formData.question4} onChange={handleChange} className="w-full p-2 border rounded" />
           </div>
           <div>
-            <label htmlFor="question5" className="block mb-2">Is there anything you&apos;d like to focus on improving next month?</label>
+            <label htmlFor="question5" className="block mb-2">Is there anything you would like to focus on improving next month?</label>
             <input type="text" id="question5" name="question5" value={formData.question5} onChange={handleChange} className="w-full p-2 border rounded" />
           </div>
           <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Submit</button>
