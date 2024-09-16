@@ -101,6 +101,12 @@ const Sidebar = () => {
                 <span className={linkTextClass}>Search</span>
               </Link>
             </li>
+            <li>
+              <Link href="/dashboard" className={linkClass}>
+                <span className="mr-3">📊</span>
+                <span className={linkTextClass}>Dashboard</span>
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
