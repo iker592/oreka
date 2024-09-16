@@ -13,6 +13,20 @@ import { DayPicker } from 'react-day-picker'
 import { addDays, startOfWeek, endOfWeek, format } from 'date-fns'
 import { CalendarIcon, ChevronLeft, ChevronRight } from 'lucide-react'
 
+import React from 'react';
+
+const LeftIcon: React.FC<React.ComponentProps<'button'>> = (props) => (
+  <button {...props}>
+    <ChevronLeft className="h-4 w-4" />
+  </button>
+);
+
+const RightIcon: React.FC<React.ComponentProps<'button'>> = (props) => (
+  <button {...props}>
+    <ChevronRight className="h-4 w-4" />
+  </button>
+);
+
 const generateMockWeeklyMood = (baseDate: Date) => {
   const weekStart = startOfWeek(baseDate)
   return Array.from({ length: 7 }, (_, i) => {
@@ -220,10 +234,6 @@ export function DashboardComponent() {
                       day_disabled: "text-gray-500 opacity-50 dark:text-gray-400",
                       day_range_middle: "aria-selected:bg-gray-700 aria-selected:text-gray-100 dark:aria-selected:bg-gray-800 dark:aria-selected:text-gray-100",
                       day_hidden: "invisible",
-                    }}
-                    components={{
-                      IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
-                      IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
                     }}
                   />
                 </PopoverContent>
