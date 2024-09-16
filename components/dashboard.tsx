@@ -13,7 +13,6 @@ import { DayPicker } from 'react-day-picker'
 import { addDays, startOfWeek, endOfWeek, format } from 'date-fns'
 import { CalendarIcon, ChevronLeft, ChevronRight } from 'lucide-react'
 
-
 const generateMockWeeklyMood = (baseDate: Date) => {
   const weekStart = startOfWeek(baseDate)
   return Array.from({ length: 7 }, (_, i) => {
@@ -198,7 +197,6 @@ export function DashboardComponent() {
                     mode="single"
                     selected={selectedDate}
                     onSelect={handleDateSelect}
-                    initialFocus
                     className="border-none bg-gray-800 text-gray-100"
                     classNames={{
                       months: "space-y-4",

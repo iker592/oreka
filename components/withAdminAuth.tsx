@@ -44,7 +44,8 @@ const withAdminAuth = (WrappedComponent: ComponentType<any>) => {
 };
 
 // Helper function to get the display name of a component
-function getDisplayName(WrappedComponent) {
+// Helper function to get the display name of a component
+function getDisplayName(WrappedComponent: ComponentType<any>): string {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
 
