@@ -197,7 +197,6 @@ export function DashboardComponent() {
                     mode="single"
                     selected={selectedDate}
                     onSelect={handleDateSelect}
-                    initialFocus
                     className="border-none bg-gray-800 text-gray-100"
                     classNames={{
                       months: "space-y-4",
@@ -220,10 +219,6 @@ export function DashboardComponent() {
                       day_disabled: "text-gray-500 opacity-50 dark:text-gray-400",
                       day_range_middle: "aria-selected:bg-gray-700 aria-selected:text-gray-100 dark:aria-selected:bg-gray-800 dark:aria-selected:text-gray-100",
                       day_hidden: "invisible",
-                    }}
-                    components={{
-                      IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
-                      IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
                     }}
                   />
                 </PopoverContent>

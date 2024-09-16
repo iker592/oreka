@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, ComponentType } from 'react';
 import { useRouter } from 'next/router';
 import { fetchAuthSession } from "aws-amplify/auth";
 
-const withAdminAuth = (WrappedComponent: React.ComponentType) => {
-  return (props: any) => {
+const withAdminAuth = (WrappedComponent: ComponentType<any>) => {
+  const WithAdminAuth = (props: any) => {
     const router = useRouter();
 
     useEffect(() => {
@@ -37,6 +37,16 @@ const withAdminAuth = (WrappedComponent: React.ComponentType) => {
     console.log('withAdminAuth - Rendering wrapped component');
     return <WrappedComponent {...props} />;
   };
+  
+  WithAdminAuth.displayName = `WithAdminAuth(${getDisplayName(WrappedComponent)})`;
+  
+  return WithAdminAuth;
 };
+
+// Helper function to get the display name of a component
+// Helper function to get the display name of a component
+function getDisplayName(WrappedComponent: ComponentType<any>): string {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
 
 export default withAdminAuth;
