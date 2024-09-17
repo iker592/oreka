@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {({ signOut, user }) => (
         <div className="min-h-screen bg-gray-100 flex">
           <Sidebar />
-          <div className="flex-grow min-h-screen md:pl-16 pt-16">
+          <div className="flex-grow min-h-screen md:pl-16 pt-16 bg-gray-900 text-gray-100">
             {children}
           </div>
         </div>

@@ -39,14 +39,14 @@ const Search = () => {
   return (
     <Layout>
       <CenteredContent>
-        <h1 className="text-3xl font-bold mb-6 text-center">Search Personalized Resources</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center text-gray-100">Search Personalized Resources</h1>
         <div className="mb-4">
-          <label htmlFor="issueSelect" className="block mb-2">Select an issue:</label>
+          <label htmlFor="issueSelect" className="block mb-2 text-gray-200">Select an issue:</label>
           <select
             id="issueSelect"
             value={selectedIssue}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded bg-gray-700 text-gray-100 border-gray-600"
           >
             <option value="">Select an issue</option>
             <option value="sleeping issues">Sleeping Issues</option>
@@ -57,8 +57,8 @@ const Search = () => {
         </div>
         {selectedIssue && (
           <div>
-            <h2 className="text-2xl font-bold mb-4">Resources for {selectedIssue}:</h2>
-            <ul className="list-disc pl-5">
+            <h2 className="text-2xl font-bold mb-4 text-gray-100">Resources for {selectedIssue}:</h2>
+            <ul className="list-disc pl-5 text-gray-200">
               {resources[selectedIssue as keyof typeof resources].map((resource, index) => (
                 <li key={index} className="mb-2">{resource}</li>
               ))}

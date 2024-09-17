@@ -41,8 +41,8 @@ const EmojiFeedback = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md w-full">
-      <h2 className="text-2xl font-bold mb-6 text-center">How are you feeling today?</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-gray-800 rounded-lg shadow-md w-full">
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-100">How are you feeling today?</h2>
       <div className="flex justify-between mb-8 flex-wrap">
         {emojis.map((emoji) => (
           <EmojiButton
@@ -54,9 +54,9 @@ const EmojiFeedback = () => {
         ))}
       </div>
       {response && (
-        <Alert>
-          <AlertTitle>Response</AlertTitle>
-          <AlertDescription>{response}</AlertDescription>
+        <Alert className="bg-gray-700 border-gray-600">
+          <AlertTitle className="text-gray-100">Response</AlertTitle>
+          <AlertDescription className="text-gray-300">{response}</AlertDescription>
         </Alert>
       )}
     </div>

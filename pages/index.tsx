@@ -37,16 +37,16 @@ export default function App() {
       <Authenticator>
         {({ signOut, user }) => (
           <CenteredContent>
-            <h1 className="text-3xl font-bold mb-6 text-center">Oreka</h1>
+            <h1 className="text-3xl font-bold mb-6 text-center text-gray-100">Oreka</h1>
             <EmojiFeedback />
-            <div className="mt-6 text-center text-gray-600">
+            <div className="mt-6 text-center text-gray-300">
               @oreka-sports
             </div>
             <div className="mt-8">
-              <h2 className="text-2xl font-bold mb-4 text-center">Daily Check-in</h2>
+              <h2 className="text-2xl font-bold mb-4 text-center text-gray-100">Daily Check-in</h2>
               <button 
                 onClick={createTodo}
-                className="w-full bg-black text-white py-2 rounded-lg mb-4 hover:bg-gray-800 transition-colors"
+                className="w-full bg-blue-600 text-white py-2 rounded-lg mb-4 hover:bg-blue-700 transition-colors"
               >
                 + Add new entry
               </button>
@@ -55,7 +55,7 @@ export default function App() {
                   <li
                     onClick={() => deleteTodo(todo.id)} 
                     key={todo.id}
-                    className="bg-gray-100 p-2 rounded cursor-pointer hover:bg-gray-200 transition-colors"
+                    className="bg-gray-700 p-2 rounded cursor-pointer hover:bg-gray-600 transition-colors text-gray-100"
                   >
                     {todo.content}
                   </li>
