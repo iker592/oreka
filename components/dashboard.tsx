@@ -165,8 +165,8 @@ export function DashboardComponent() {
                         <DialogTrigger asChild>
                           <Button variant="outline" size="sm" className="bg-gray-700 text-gray-100 border-gray-600 hover:bg-gray-600">View Details</Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-[800px] w-[90vw] bg-gray-800 text-gray-100 border-gray-700">
-                          <DialogHeader>
+                        <DialogContent className="max-w-[90vw] w-full sm:max-w-[80vw] md:max-w-[70vw] lg:max-w-[60vw] xl:max-w-[50vw] max-h-[90vh] overflow-y-auto bg-gray-800 text-gray-100 border-gray-700">
+                          <DialogHeader className="text-center">
                             <DialogTitle className="text-gray-100">{user.name}&apos;s Details</DialogTitle>
                           </DialogHeader>
                           <UserDetails user={user} />
@@ -258,61 +258,67 @@ export function DashboardComponent() {
 function UserDetails({ user }: { user: typeof mockData[0] }) {
   return (
     <Tabs defaultValue="onboarding" className="w-full">
-      <TabsList className="bg-gray-700">
-        <TabsTrigger value="onboarding" className="data-[state=active]:bg-gray-600 text-gray-100">Onboarding Checkup</TabsTrigger>
-        <TabsTrigger value="monthly" className="data-[state=active]:bg-gray-600 text-gray-100">Monthly Checkup</TabsTrigger>
-        <TabsTrigger value="daily" className="data-[state=active]:bg-gray-600 text-gray-100">Daily Checkups</TabsTrigger>
-      </TabsList>
-      <TabsContent value="onboarding">
-        <Card className="bg-gray-800 border-gray-700">
-          <CardHeader>
-            <CardTitle className="text-gray-100">Onboarding Checkup</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <dl className="grid grid-cols-2 gap-4">
-              {Object.entries(user.onboardingCheckup).map(([key, value]) => (
-                <div key={key}>
-                  <dt className="font-medium text-gray-400">{key}</dt>
-                  <dd className="text-gray-100">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </CardContent>
-        </Card>
-      </TabsContent>
-      <TabsContent value="monthly">
-        <Card className="bg-gray-800 border-gray-700">
-          <CardHeader>
-            <CardTitle className="text-gray-100">Monthly Checkup</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <dl className="grid grid-cols-2 gap-4">
-              {Object.entries(user.monthlyCheckup).map(([key, value]) => (
-                <div key={key}>
-                  <dt className="font-medium text-gray-400">{key}</dt>
-                  <dd className="text-gray-100">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </CardContent>
-        </Card>
-      </TabsContent>
-      <TabsContent value="daily">
-        <Card className="bg-gray-800 border-gray-700">
-          <CardHeader>
-            <CardTitle className="text-gray-100">Daily Checkups</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {user.dailyCheckups.map((checkup, index) => (
-              <div key={index} className="mb-4 p-4 border rounded bg-gray-700 border-gray-600">
-                <p><strong className="text-gray-300">Date:</strong> <span className="text-gray-100">{checkup.date}</span></p>
-                <p><strong className="text-gray-300">Mood:</strong> <span className="text-gray-100">{checkup.mood}</span></p>
-                <p><strong className="text-gray-300">Comment:</strong> <span className="text-gray-100">{checkup.comment}</span></p>
+      <div className="flex justify-center">
+        <TabsList className="bg-gray-700 inline-flex">
+          <TabsTrigger value="onboarding" className="data-[state=active]:bg-gray-600 text-gray-100">Onboarding</TabsTrigger>
+          <TabsTrigger value="monthly" className="data-[state=active]:bg-gray-600 text-gray-100">Monthly</TabsTrigger>
+          <TabsTrigger value="daily" className="data-[state=active]:bg-gray-600 text-gray-100">Daily</TabsTrigger>
+        </TabsList>
+      </div>
+      <div className="max-h-[70vh] overflow-y-auto">
+        <TabsContent value="onboarding">
+          <Card className="bg-gray-800 border-gray-700">
+            <CardHeader>
+              <CardTitle className="text-gray-100">Onboarding Checkup</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-2xl mx-auto">
+                {Object.entries(user.onboardingCheckup).map(([key, value]) => (
+                  <div key={key} className="break-words">
+                    <dt className="font-medium text-gray-400 mb-1">{key}</dt>
+                    <dd className="text-gray-100">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="monthly">
+          <Card className="bg-gray-800 border-gray-700">
+            <CardHeader>
+              <CardTitle className="text-gray-100">Monthly Checkup</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-2xl mx-auto">
+                {Object.entries(user.monthlyCheckup).map(([key, value]) => (
+                  <div key={key} className="break-words">
+                    <dt className="font-medium text-gray-400 mb-1">{key}</dt>
+                    <dd className="text-gray-100">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="daily">
+          <Card className="bg-gray-800 border-gray-700">
+            <CardHeader>
+              <CardTitle className="text-gray-100">Daily Checkups</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4 max-w-2xl mx-auto">
+                {user.dailyCheckups.map((checkup, index) => (
+                  <div key={index} className="p-4 border rounded bg-gray-700 border-gray-600">
+                    <p className="mb-2"><strong className="text-gray-300">Date:</strong> <span className="text-gray-100">{checkup.date}</span></p>
+                    <p className="mb-2"><strong className="text-gray-300">Mood:</strong> <span className="text-gray-100">{checkup.mood}</span></p>
+                    <p><strong className="text-gray-300">Comment:</strong> <span className="text-gray-100">{checkup.comment}</span></p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </CardContent>
-        </Card>
-      </TabsContent>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </div>
     </Tabs>
   )
 }
