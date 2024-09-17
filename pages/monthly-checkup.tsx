@@ -46,29 +46,29 @@ const MonthlyCheckup = () => {
   return (
     <Layout>
       <CenteredContent>
-        <h1 className="text-3xl font-bold mb-6 text-center">Monthly Checkup</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center text-gray-100">Monthly Checkup</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="question1" className="block mb-2">How would you rate your overall mood this month?</label>
-            <input type="text" id="question1" name="question1" value={formData.question1} onChange={handleChange} className="w-full p-2 border rounded" />
+            <label htmlFor="question1" className="block mb-2 text-gray-200">How would you rate your overall mood this month?</label>
+            <input type="text" id="question1" name="question1" value={formData.question1} onChange={handleChange} className="w-full p-2 border rounded bg-gray-700 text-gray-100 border-gray-600" />
           </div>
           <div>
-            <label htmlFor="question2" className="block mb-2">Have you experienced any significant stressors this month?</label>
-            <input type="text" id="question2" name="question2" value={formData.question2} onChange={handleChange} className="w-full p-2 border rounded" />
+            <label htmlFor="question2" className="block mb-2 text-gray-200">Have you experienced any significant stressors this month?</label>
+            <input type="text" id="question2" name="question2" value={formData.question2} onChange={handleChange} className="w-full p-2 border rounded bg-gray-700 text-gray-100 border-gray-600" />
           </div>
           <div>
-            <label htmlFor="question3" className="block mb-2">How satisfied are you with your progress towards your goals?</label>
-            <input type="text" id="question3" name="question3" value={formData.question3} onChange={handleChange} className="w-full p-2 border rounded" />
+            <label htmlFor="question3" className="block mb-2 text-gray-200">How satisfied are you with your progress towards your goals?</label>
+            <input type="text" id="question3" name="question3" value={formData.question3} onChange={handleChange} className="w-full p-2 border rounded bg-gray-700 text-gray-100 border-gray-600" />
           </div>
           <div>
-            <label htmlFor="question4" className="block mb-2">Have you noticed any changes in your sleep or appetite?</label>
-            <input type="text" id="question4" name="question4" value={formData.question4} onChange={handleChange} className="w-full p-2 border rounded" />
+            <label htmlFor="question4" className="block mb-2 text-gray-200">Have you noticed any changes in your sleep or appetite?</label>
+            <input type="text" id="question4" name="question4" value={formData.question4} onChange={handleChange} className="w-full p-2 border rounded bg-gray-700 text-gray-100 border-gray-600" />
           </div>
           <div>
-            <label htmlFor="question5" className="block mb-2">Is there anything you would like to focus on improving next month?</label>
-            <input type="text" id="question5" name="question5" value={formData.question5} onChange={handleChange} className="w-full p-2 border rounded" />
+            <label htmlFor="question5" className="block mb-2 text-gray-200">Is there anything you would like to focus on improving next month?</label>
+            <input type="text" id="question5" name="question5" value={formData.question5} onChange={handleChange} className="w-full p-2 border rounded bg-gray-700 text-gray-100 border-gray-600" />
           </div>
-          <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Submit</button>
+          <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Submit</button>
         </form>
       </CenteredContent>
     </Layout>
