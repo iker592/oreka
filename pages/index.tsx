@@ -22,9 +22,9 @@ export default function App() {
     listTodos();
   }, []);
 
-  function createTodo() {
+  function createTodo(content: string, date: string) {
     client.models.Todo.create({
-      content: window.prompt("What's up in your life?"),
+      content: content,
     });
   }
     
@@ -32,24 +32,21 @@ export default function App() {
     client.models.Todo.delete({ id })
   }
 
+  const handleEmojiFeedback = (level: number, comment: string) => {
+    const currentDate = new Date().toISOString().split('T')[0];
+    const content = `Mood: ${level}, Comment: ${comment}`;
+    createTodo(content, currentDate);
+  };
+
   return (
     <Layout>
       <Authenticator>
         {({ signOut, user }) => (
           <CenteredContent>
-            <h1 className="text-3xl font-bold mb-6 text-center text-gray-100">Oreka</h1>
-            <EmojiFeedback />
-            <div className="mt-6 text-center text-gray-300">
-              @oreka-sports
-            </div>
+            <h1 className="text-3xl font-bold mb-6 text-center text-gray-100">Daily Checkup</h1>
+            <EmojiFeedback onSave={handleEmojiFeedback} />
             <div className="mt-8">
-              <h2 className="text-2xl font-bold mb-4 text-center text-gray-100">Daily Check-in</h2>
-              <button 
-                onClick={createTodo}
-                className="w-full bg-blue-600 text-white py-2 rounded-lg mb-4 hover:bg-blue-700 transition-colors"
-              >
-                + Add new entry
-              </button>
+              <h2 className="text-2xl font-bold mb-4 text-center text-gray-100">Previous entries</h2>
               <ul className="space-y-2">
                 {todos.map((todo) => (
                   <li
